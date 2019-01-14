@@ -42,7 +42,6 @@ gulp.task('sprites', () => {
 
 gulp.task('build-vendor-css', () => {
   return gulp.src([
-      `${sourceDirectory}css/reset.css`,
       ...getPluginsPaths('css')
     ])
     .pipe($.plumber())
@@ -54,7 +53,6 @@ gulp.task('build-vendor-css', () => {
 gulp.task('build-css', () => {
   return gulp.src([
       `${sourceDirectory}scss/*.scss`,
-      `${sourceDirectory}scss/icons/*.scss`,
       `${sourceDirectory}scss/components/**/*.scss`
     ])
     .pipe($.plumber())
@@ -64,6 +62,7 @@ gulp.task('build-css', () => {
       cascade: false
     }))
     .pipe($.concat('style.css'))
+    .pipe($.cssnano())
     .pipe(gulp.dest(`${buildDirectory}css`))
     .pipe($.connect.reload());
 });

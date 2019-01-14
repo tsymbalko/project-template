@@ -1,5 +1,6 @@
 {
   "css": {
+    "normalize": "normalize.css/normalize.css"
   },
   "js": {
     "jquery": "jquery/dist/jquery.min.js"
